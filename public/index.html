@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>得鱼团契</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">得鱼</h1>
+        <h1 class="title">团契</h1>
+        
+        <p class="verse">耶稣对他们说：“来跟从我，我要叫你们得人如得鱼一样。” (马太福音 4:19)</p>
+        
+        <p class="invite">诚意邀请您参与得鱼团契的第一个聚会，9-21 星期日 1PM ~ 2PM，地点：汝来福音堂</p>
+        
+        <button id="rsvpButton" class="rsvp-btn">【确认出席】</button>
+        
+        <!-- RSVP Modal -->
+        <div id="rsvpModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>确认出席</h2>
+                <form id="rsvpForm">
+                    <input type="text" id="nameInput" placeholder="请输入您的姓名" required>
+                    <button type="submit">提交</button>
+                </form>
+                <div id="rsvpList"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员后台 - 得鱼团契</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">管理员</h1>
+        <h1 class="title">后台</h1>
+        
+        <!-- Login Form -->
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="用户名" required>
+            <input type="password" id="password" placeholder="密码" required>
+            <button type="submit">登录</button>
+        </form>
+        
+        <!-- Dashboard -->
+        <div id="dashboard" style="display: none;">
+            <h2>管理员面板</h2>
+            
+            <h3>出席名单</h3>
+            <div id="rsvpList"></div>
+            
+            <h3>创建新管理员</h3>
+            <form id="createAdminForm">
+                <input type="text" id="newUsername" placeholder="新用户名" required>
+                <input type="password" id="newPassword" placeholder="新密码" required>
+                <button type="submit">创建管理员</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="admin-script.js"></script>
+</body>
+</html>
