@@ -73,11 +73,13 @@ app.get('/api/rsvps', (req, res) => {
 
 // POST /api/rsvps - Add RSVP
 app.post('/api/rsvps', (req, res) => {
+  console.log('RSVP POST request body:', req.body);
   const { name, deviceKey } = req.body;
   if (!name || name.trim().length === 0) {
     return res.status(400).json({ error: 'Name is required' });
   }
   if (!deviceKey) {
+    console.log('Missing device key in request');
     return res.status(400).json({ error: 'Device key is required' });
   }
   const rsvps = readJson('rsvps.json');

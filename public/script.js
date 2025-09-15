@@ -122,7 +122,8 @@ function loadPublicRsvps() {
         div.appendChild(nameSpan);
         
         // Show edit/delete buttons only for RSVPs created by this device
-        if (rsvp.deviceKey === deviceKey) {
+        console.log('RSVP:', rsvp.name, 'Device key:', rsvp.deviceKey, 'Current device:', deviceKey);
+        if (rsvp.deviceKey && rsvp.deviceKey === deviceKey) {
           const actionsDiv = document.createElement('div');
           actionsDiv.className = 'rsvp-actions';
           
