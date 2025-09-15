@@ -31,6 +31,10 @@ function readJson(file) {
 }
 
 function writeJson(file, data) {
+  // Ensure data directory exists
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
   const filePath = path.join(DATA_DIR, file);
   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
 }
