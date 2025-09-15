@@ -205,5 +205,6 @@ app.get('/api/admin/status', (req, res) => {
 initializeData();
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
+  console.log(`Device key validation enabled`);
 });
