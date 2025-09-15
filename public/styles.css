@@ -132,6 +132,105 @@ body {
   font-size: 1rem;
 }
 
+.description {
+  font-size: 1.1rem;
+  margin: 20px 0;
+  line-height: 1.6;
+  color: #555;
+  text-align: center;
+}
+
+.attendance-section {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.attendance-section h3 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+#publicRsvpList {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 0 auto;
+  text-align: left;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.rsvp-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.rsvp-item:last-child {
+  border-bottom: none;
+}
+
+.rsvp-name {
+  font-size: 1rem;
+  flex-grow: 1;
+}
+
+.rsvp-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+  padding: 3px 8px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+#publicRsvpList p {
+  margin: 5px 0;
+  font-size: 1rem;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  color: #999;
+}
+
+#publicRsvpList p:last-child {
+  border-bottom: none;
+}
+
+.footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #666;
+  font-size: 0.9rem;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
   .title {

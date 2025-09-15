@@ -12,25 +12,38 @@
         <h1 class="title">得鱼</h1>
         <h1 class="title">团契</h1>
         
-        <p class="verse">耶稣对他们说：“来跟从我，我要叫你们得人如得鱼一样。” (马太福音 4:19)</p>
+        <p class="verse">耶稣对他们说："来跟从我，我要叫你们得人如得鱼一样。" (马太福音 4:19)</p>
+        
+        <p class="description">得鱼团契是一个为期6个月，每月一次聚会的团契。<br>
+        这是一个让本堂回应马太4：19的呼召。<br>
+        让我们携手向主回应，我愿尝试。</p>
         
         <p class="invite">诚意邀请您参与得鱼团契的第一个聚会，9-21 星期日 1PM ~ 2PM，地点：汝来福音堂</p>
         
-        <button id="rsvpButton" class="rsvp-btn">【确认出席】</button>
+        <button id="rsvpButton" class="rsvp-btn" aria-label="确认出席聚会">【确认出席】</button>
+        
+        <div id="attendanceSection" class="attendance-section">
+            <h3>出席名单</h3>
+            <div id="publicRsvpList"></div>
+        </div>
         
         <!-- RSVP Modal -->
-        <div id="rsvpModal" class="modal">
+        <div id="rsvpModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
             <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>确认出席</h2>
+                <span class="close" aria-label="关闭模态框">&times;</span>
+                <h2 id="modalTitle">确认出席</h2>
                 <form id="rsvpForm">
-                    <input type="text" id="nameInput" placeholder="请输入您的姓名" required>
+                    <input type="text" id="nameInput" placeholder="请输入您的姓名" required aria-label="姓名">
                     <button type="submit">提交</button>
                 </form>
                 <div id="rsvpList"></div>
             </div>
         </div>
     </div>
+    
+    <footer class="footer">
+        <p>汝来福音堂 2025</p>
+    </footer>
     
     <script src="script.js"></script>
 </body>

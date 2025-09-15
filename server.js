@@ -69,15 +69,83 @@ app.get('/api/rsvps', (req, res) => {
 
 // POST /api/rsvps - Add RSVP
 app.post('/api/rsvps', (req, res) => {
-  const { name } = req.body;
+  const { name, deviceKey } = req.body;
   if (!name || name.trim().length === 0) {
     return res.status(400).json({ error: 'Name is required' });
   }
+  if (!deviceKey) {
+    return res.status(400).json({ error: 'Device key is required' });
+  }
   const rsvps = readJson('rsvps.json');
+  
+  // Check if this device already has an RSVP
+  const existingRsvp = rsvps.find(rsvp => rsvp.deviceKey === deviceKey);
+  if (existingRsvp) {
+    return res.status(400).json({ error: '您已经确认过出席了' });
+  }
+  
   rsvps.push({
+    id: Date.now().toString(),
     name: name.trim(),
+    deviceKey: deviceKey,
     timestamp: new Date().toISOString()
   });
+  writeJson('rsvps.json', rsvps);
+  res.json({ success: true });
+});
+
+// PUT /api/rsvps/:id - Edit RSVP (only by original device)
+app.put('/api/rsvps/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, deviceKey } = req.body;
+  
+  if (!name || name.trim().length === 0) {
+    return res.status(400).json({ error: 'Name is required' });
+  }
+  if (!deviceKey) {
+    return res.status(400).json({ error: 'Device key is required' });
+  }
+
+  const rsvps = readJson('rsvps.json');
+  const rsvpIndex = rsvps.findIndex(rsvp => rsvp.id === id);
+  
+  if (rsvpIndex === -1) {
+    return res.status(404).json({ error: 'RSVP not found' });
+  }
+
+  // Check if the device key matches
+  if (rsvps[rsvpIndex].deviceKey !== deviceKey) {
+    return res.status(403).json({ error: '您只能编辑自己的确认信息' });
+  }
+
+  rsvps[rsvpIndex].name = name.trim();
+  rsvps[rsvpIndex].timestamp = new Date().toISOString();
+  writeJson('rsvps.json', rsvps);
+  res.json({ success: true });
+});
+
+// DELETE /api/rsvps/:id - Delete RSVP (only by original device)
+app.delete('/api/rsvps/:id', (req, res) => {
+  const { id } = req.params;
+  const { deviceKey } = req.body;
+  
+  if (!deviceKey) {
+    return res.status(400).json({ error: 'Device key is required' });
+  }
+
+  const rsvps = readJson('rsvps.json');
+  const rsvpIndex = rsvps.findIndex(rsvp => rsvp.id === id);
+  
+  if (rsvpIndex === -1) {
+    return res.status(404).json({ error: 'RSVP not found' });
+  }
+
+  // Check if the device key matches
+  if (rsvps[rsvpIndex].deviceKey !== deviceKey) {
+    return res.status(403).json({ error: '您只能删除自己的确认信息' });
+  }
+
+  rsvps.splice(rsvpIndex, 1);
   writeJson('rsvps.json', rsvps);
   res.json({ success: true });
 });
